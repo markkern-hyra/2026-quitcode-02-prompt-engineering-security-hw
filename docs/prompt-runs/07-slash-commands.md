@@ -1,6 +1,6 @@
 # Прогін 07 — slash-команди (Task D)
 
-> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`d1-cmd-add-tests`](./raw/d1-cmd-add-tests.md), [`d2-cmd-sanitize-check`](./raw/d2-cmd-sanitize-check.md).
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`d1-cmd-add-tests`](./raw/d1-cmd-add-tests.md), [`d2-cmd-sanitize-check`](./raw/d2-cmd-sanitize-check.md), [`e5-cmd-sanitize-check-wrapper`](./raw/e5-cmd-sanitize-check-wrapper.md).
 
 Команди: [`.claude/commands/add-tests.md`](../../.claude/commands/add-tests.md),
 [`.claude/commands/sanitize-check.md`](../../.claude/commands/sanitize-check.md).
@@ -73,3 +73,29 @@
 дозволений, і `allowed-tools` команди не може його заборонити для одного файлу;
 у цьому прогоні модель правило виконала, але гарантію дав би лише `deny` у
 налаштуваннях (як для `.env` у Task C).
+
+## `/sanitize-check` через скрипт (після рев'ю CodeRabbit)
+
+CodeRabbit: `Bash(grep:*)` у `allowed-tools` дозволяє `grep` без `cut`, тобто
+модель *може* отримати рядки із секретами — правило «лише номери рядків»
+трималось на тексті. Тепер `allowed-tools` — лише `Read` чек-ліста й
+`Bash(bash docs/tools/sensitive-lines.sh:*)`; скрипт сам друкує тільки
+`категорія | рядки | кількість`. Прогін — від `0743576` з підкладеними новими
+командою й скриптом. Сирий вихід —
+[`e5-cmd-sanitize-check-wrapper`](./raw/e5-cmd-sanitize-check-wrapper.md).
+
+| | |
+|---|---|
+| Ходів / вартість / час | 3 / $0.13 / 27 с; відмов 0 |
+| Виклики | рівно 2: `Read docs/sanitization-checklist.md`, `bash docs/tools/sensitive-lines.sh materials/client-brief.md` |
+| Таблиця у відповіді | дослівно вивід скрипта; збігається з d2 (секрети 37–39, 41; connection string 41; вебхук 40; email 17, 41; телефони 18, 47–49; хендл 19) |
+| Вердикт | 🔴 → «нікуди», чек-ліст ручного проходу, окремо — рядки з плейсхолдерами |
+
+Тепер «модель не бачить вмісту» гарантують дозволи, а не лише текст команди:
+жодного іншого способу прочитати файл у цієї команди немає.
+
+**Правка в розборі d2 вище.** Хибна знахідка CodeRabbit про «зламаний»
+`grep … | cut` у d2 виникла через обрізання команди на 160 символах у
+генераторі сирих виходів; повна команда в лозі —
+`grep -nEi '…' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -`.
+Генератор тепер показує до 300 символів і позначає обрізання.
