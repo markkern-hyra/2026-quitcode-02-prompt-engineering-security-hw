@@ -1,5 +1,7 @@
 # Прогін 05 — `document-module`: v1 (провал) → v2
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a6-document-module`](./raw/a6-document-module.md), [`a6b-document-module-v2`](./raw/a6b-document-module-v2.md).
+
 Промпт: [`prompts/document-module.md`](../../prompts/document-module.md).
 Методика — [README](./README.md).
 
@@ -11,7 +13,7 @@
 |---|---|
 | Ходів / вартість / час | **164 / $5.01 / 491 с — зупинено стелею `--max-budget-usd 5`** |
 | Фінальний звіт | **немає** (`error_max_budget_usd`) |
-| Відмови в дозволах | 145: 2× `cd … && …`, **143× `npx tsx check-behavior.mjs` поспіль** |
+| Відмови в дозволах | 145: 2× `cd app && npx tsx -e …`, **143× `npx tsx check-behavior.mjs` поспіль** |
 | Змінені файли | `app/src/quote.ts` — лише коментарі ✅ (перевірено: жодного зміненого рядка коду) |
 | `npm test` / typecheck | ✅ 41 passed / ✅ |
 

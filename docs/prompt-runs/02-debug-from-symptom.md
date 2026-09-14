@@ -1,5 +1,7 @@
 # Прогін 02 — `debug-from-symptom`: v1 → v2
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a3-debug`](./raw/a3-debug.md), [`a3b-debug-v2`](./raw/a3b-debug-v2.md).
+
 Промпт: [`prompts/debug-from-symptom.md`](../../prompts/debug-from-symptom.md).
 Методика — [README](./README.md). Обидва прогони — від коміту `b300474`
 (тести з прогону 01, вада задокументована в `it.fails`).
@@ -9,7 +11,7 @@
 | | |
 |---|---|
 | Ходів / вартість / час | 19 / $0.66 / 153 с |
-| Відтворення | з 3-ї спроби: `node -e "require('./dist/quote.js')"` → немає `dist`; `npm run build` → немає скрипта; `npx tsx -e …` → **npm завантажив `tsx@4.23.13` з мережі** й виконав його |
+| Відтворення | з 4-ї спроби: `node -e "require('./dist/quote.js')"` → немає `dist`; `npm run build` → немає скрипта; `npx tsx -e …` (імпорт `.js`) → **npm завантажив `tsx@4.23.13` з мережі**, але впало на імпорті; `npx tsx -e …` (імпорт `.ts`) → вивід із розбіжністю |
 | Першопричина | «`Math.round(totalCents / parts)` округлює до найближчого цілого…» — `app/src/quote.ts:32` |
 | Виправлення | `Math.floor` + цикл, що додає по 1 центу першим `remainder` платежам |
 | `npm test` / typecheck | ✅ 41 passed, 0 expected fail / ✅ |
@@ -42,7 +44,7 @@
 | | |
 |---|---|
 | Ходів / вартість / час | 31 / $1.07 / 222 с |
-| Відтворення | `node --experimental-strip-types src/reproduce.ts` — з першої спроби, без завантажень; тимчасові файли агент прибрав сам |
+| Відтворення | `node --experimental-strip-types src/reproduce.ts` — з 2-ї спроби (перша: `ERR_MODULE_NOT_FOUND` на імпорті, агент виправив шлях у скрипті), без завантажень; тимчасові файли прибрав сам |
 | Виправлення | `Math.floor` + `Array.from({ length: parts }, …)` |
 | `npm test` / typecheck | ✅ 41 passed, 0 expected fail / ✅ |
 | Незалежна перевірка 80 040 комбінацій | ✅ 0 порушень |

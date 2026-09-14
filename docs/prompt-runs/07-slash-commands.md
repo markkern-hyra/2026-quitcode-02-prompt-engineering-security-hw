@@ -1,5 +1,7 @@
 # Прогін 07 — slash-команди (Task D)
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`d1-cmd-add-tests`](./raw/d1-cmd-add-tests.md), [`d2-cmd-sanitize-check`](./raw/d2-cmd-sanitize-check.md).
+
 Команди: [`.claude/commands/add-tests.md`](../../.claude/commands/add-tests.md),
 [`.claude/commands/sanitize-check.md`](../../.claude/commands/sanitize-check.md).
 Методика — [README](./README.md). Прогони — `claude -p "/add-tests app/src/quote.ts"`

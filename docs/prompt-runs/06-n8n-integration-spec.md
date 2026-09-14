@@ -1,5 +1,7 @@
 # Прогін 06 — `n8n-integration-spec`: v1 → v2
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a7-n8n-spec`](./raw/a7-n8n-spec.md), [`a7b-n8n-spec-v2`](./raw/a7b-n8n-spec-v2.md).
+
 Промпт: [`prompts/n8n-integration-spec.md`](../../prompts/n8n-integration-spec.md).
 Методика — [README](./README.md). Обидва прогони — від коміту `97e169b`
 (Task B вже в гілці), **лише читання**: `--permission-mode default`, без

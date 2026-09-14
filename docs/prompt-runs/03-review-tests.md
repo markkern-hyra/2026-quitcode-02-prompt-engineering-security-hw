@@ -1,5 +1,7 @@
 # Прогін 03 — `review-tests`
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a4-review-tests`](./raw/a4-review-tests.md).
+
 Промпт: [`prompts/review-tests.md`](../../prompts/review-tests.md). Методика —
 [README](./README.md). Від коміту `9ad3fd6` (після виправлення
 `splitInstallments`), паралельно з прогонами 04 і 05a.

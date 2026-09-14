@@ -1,5 +1,7 @@
 # Прогін 01 — `add-tests`: v1 → meta-prompting → v2 (markdown vs XML)
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a1-meta-add-tests`](./raw/a1-meta-add-tests.md), [`a2-add-tests-md`](./raw/a2-add-tests-md.md), [`a2-add-tests-xml`](./raw/a2-add-tests-xml.md).
+
 Промпт: [`prompts/add-tests.md`](../../prompts/add-tests.md). Методика — [README](./README.md).
 
 ## 01a — meta-prompting над v1

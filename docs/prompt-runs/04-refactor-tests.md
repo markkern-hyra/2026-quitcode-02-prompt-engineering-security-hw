@@ -1,5 +1,7 @@
 # Прогін 04 — `refactor-tests`
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a5-refactor-tests`](./raw/a5-refactor-tests.md).
+
 Промпт: [`prompts/refactor-tests.md`](../../prompts/refactor-tests.md). Методика —
 [README](./README.md). Від коміту `9ad3fd6`, паралельно з 03 і 05a.
 

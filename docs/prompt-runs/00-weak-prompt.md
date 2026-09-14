@@ -1,5 +1,7 @@
 # Прогін 00 — слабкий промпт (baseline)
 
+> Сирі виходи прогонів (запит, виклики інструментів, фінальна відповідь): [`a0-weak`](./raw/a0-weak.md), [`a0b-weak-followup`](./raw/a0b-weak-followup.md).
+
 Промпт: `materials/weak-prompt.md` → `допоможи з тестами для app`.
 Методика й середовище — див. [README](./README.md).
 
@@ -34,7 +36,7 @@
 | | |
 |---|---|
 | Ходів / вартість | 4 + 6 / $0.40 + $0.18 |
-| Хід 1 | запустив субагента «Explore app and test structure» (13 викликів: `find`, `ls`, `Read` README/CLAUDE/AGENTS/tsconfig…); повернув пропозицію тестів англійською і спитав «Would you like me to add these tests?» |
+| Хід 1 | запустив субагента «Explore app and test structure» (13 викликів: `find`, `ls`, `Read` README/CLAUDE/AGENTS/tsconfig…); повернув пропозицію тестів англійською і спитав «Would you like me to add these tests to the test file?» |
 | Хід 2 | 3× `Edit` у `app/src/quote.test.ts` (+63 рядки, 14 нових `it`), `npm test` |
 | `npm test` | **❌ 3 failed / 15 passed, exit 1** |
 | `quote.ts` | не змінено (заборони не було — просто не став) |
