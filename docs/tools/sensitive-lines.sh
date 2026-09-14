@@ -6,7 +6,24 @@
 set -euo pipefail
 
 f=${1:?usage: sensitive-lines.sh <файл>}
+
+# Обмеження шляху (AGENTS.md, правило 3): секретні за назвою файли й символьні
+# посилання відхиляються ще до перевірки існування, файли поза репозиторієм — теж.
+name=$(basename -- "$f" | tr '[:upper:]' '[:lower:]')
+case "$name" in
+  .env|.env.*|*.pem|*.key|*key*|*token*|*secret*|*credential*)
+    echo "відмовлено: секретний файл за назвою: $f" >&2; exit 3 ;;
+esac
+[ -L "$f" ] && { echo "відмовлено: символьне посилання: $f" >&2; exit 3; }
 [ -f "$f" ] || { echo "не файл: $f" >&2; exit 2; }
+root=$(cd "$(dirname -- "$0")" && git rev-parse --show-toplevel 2>/dev/null) \
+  || { echo "скрипт має лежати в git-репозиторії" >&2; exit 3; }
+root=$(cd "$root" && pwd -P)
+real="$(cd "$(dirname -- "$f")" && pwd -P)/$(basename -- "$f")"
+case "$real" in
+  "$root"/*) ;;
+  *) echo "відмовлено: файл поза репозиторієм: $f" >&2; exit 3 ;;
+esac
 
 # Рядки з плейсхолдерами санітизації не рахуються (як grep -v у чек-лісті).
 ALLOW='<SECRET_OUT_OF_BAND>|\(XX\)|\(00\)'

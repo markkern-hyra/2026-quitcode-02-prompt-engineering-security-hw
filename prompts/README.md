@@ -10,10 +10,10 @@
 |---|---|---|---|---|---|
 | [`add-tests.md`](./add-tests.md) | тести | Тести на крайові випадки й грошові інваріанти; вади — у `it.fails`, продакшн-код не чіпає. **Два діалекти: markdown + XML** | `app/src/quote.ts` | 2 | [01](../docs/prompt-runs/01-add-tests.md) |
 | [`debug-from-symptom.md`](./debug-from-symptom.md) | дебаг | Від бізнес-симптому до відтворення, першопричини й мінімального виправлення з таблицею «до / після» | `splitInstallments` | 3 | [02](../docs/prompt-runs/02-debug-from-symptom.md) |
-| [`review-tests.md`](./review-tests.md) | рев'ю | Рев'ю тестового набору мутаціями: чи падають тести, коли код зламано, і де тести вводять в оману | `app/src/quote.test.ts` | 2 | [03](../docs/prompt-runs/03-review-tests.md) |
-| [`refactor-tests.md`](./refactor-tests.md) | рефакторинг | Розрослий тестовий файл → таблиці `it.each` без втрати перевірок (доказ — ті самі мутації до й після) | `app/src/quote.test.ts` | 2 | [04](../docs/prompt-runs/04-refactor-tests.md) |
-| [`document-module.md`](./document-module.md) | документація | TSDoc фактичного контракту; кожне твердження підтверджене запуском, невизначене — «Не визначено» | `app/src/quote.ts` | 3 | [05](../docs/prompt-runs/05-document-module.md) |
-| [`n8n-integration-spec.md`](./n8n-integration-spec.md) | задача агенції | Санітизований бриф → специфікація n8n-воркфлоу: вузли, валідація, збої, навантаження, відкриті питання | `docs/sanitized-brief.md` | 3 | [06](../docs/prompt-runs/06-n8n-integration-spec.md) |
+| [`review-tests.md`](./review-tests.md) | рев'ю | Рев'ю тестового набору мутаціями: чи падають тести, коли код зламано, і де тести вводять в оману | `app/src/quote.test.ts` | 3 | [03](../docs/prompt-runs/03-review-tests.md) |
+| [`refactor-tests.md`](./refactor-tests.md) | рефакторинг | Розрослий тестовий файл → таблиці `it.each` без втрати перевірок (доказ — ті самі мутації до й після) | `app/src/quote.test.ts` | 4 | [04](../docs/prompt-runs/04-refactor-tests.md) |
+| [`document-module.md`](./document-module.md) | документація | TSDoc фактичного контракту; кожне твердження підтверджене запуском, невизначене — «Не визначено» | `app/src/quote.ts` | 4 | [05](../docs/prompt-runs/05-document-module.md) |
+| [`n8n-integration-spec.md`](./n8n-integration-spec.md) | задача агенції | Санітизований бриф → специфікація n8n-воркфлоу: вузли, валідація, збої, навантаження, відкриті питання | `docs/sanitized-brief.md` | 4 | [06](../docs/prompt-runs/06-n8n-integration-spec.md) |
 | [`review-pr.md`](./review-pr.md) | рев'ю | Рев'ю дифу перед мержем (приклад-планка зі стартового репо) | `app/src/quote.ts` | 1 | — |
 
 Методика прогонів (свіжа headless-сесія, окремий worktree, лог кожного виклику

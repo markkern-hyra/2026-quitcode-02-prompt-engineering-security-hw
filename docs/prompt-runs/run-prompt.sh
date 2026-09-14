@@ -48,6 +48,7 @@ fi
 git -C "$WT" add -A -N >/dev/null 2>&1
 git -C "$WT" diff > "$OUT/diff.patch"
 (cd "$WT/app" && npm test > "$OUT/tests.txt" 2>&1; echo "npm test exit: $?" >> "$OUT/tests.txt")
+(cd "$WT/app" && npm run typecheck > "$OUT/typecheck.txt" 2>&1; echo "npm run typecheck exit: $?" >> "$OUT/typecheck.txt")
 jq -r 'select(.type=="assistant") | .message.content[]? | select(.type=="tool_use") | "\(.name)\t\(.input|tostring|.[0:300])"' "$OUT/log.jsonl" > "$OUT/tool-calls.tsv"
 jq -r 'select(.type=="result") | .result' "$OUT/log.jsonl" > "$OUT/final.md"
 echo "done: $OUT"
