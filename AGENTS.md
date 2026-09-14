@@ -87,10 +87,14 @@ homework repo**.
 - Читай лише файли, потрібні для поточної задачі.
 - Не змінюй `materials/`, `.coderabbit.yaml`, `.github/` і власні дозволи
   (`.claude/settings*.json`).
-- Правила 3–5 підкріплені технічно в `.claude/settings.json` (`deny` / `ask`).
-  Текст тут — перша лінія, дозволи — друга. Для автоматизацій, які читають
-  неперевірений текст без людини поруч, потрібна третя: ізоляція (sandbox, без
-  мережі й MCP-конекторів) — див. `docs/injection-report.md`.
+- Правила 3–5 **частково** підкріплені в `.claude/settings.json`: `deny` для
+  `.env`, `*KEY*`, `*TOKEN*`, `*SECRET*`, `*.pem`, `*.key`, змін завдання й
+  власних дозволів, `curl`, `wget`, `env`, `printenv`, `WebFetch`, `WebSearch`;
+  `ask` для `git push` і `gh pr create`. **Не покрито:** назви з `credential` і
+  з малими літерами (`key`, `token`, `secret`), мережеві запити через `node`,
+  `npx`, `gh api` тощо. Там тримає лише текст цих правил (перша лінія); дозволи —
+  друга лінія; надійно закриває тільки ізоляція (sandbox без мережі й
+  MCP-конекторів) — див. `docs/injection-report.md`.
 
 ## How to verify
 
