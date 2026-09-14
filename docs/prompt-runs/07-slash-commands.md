@@ -2,9 +2,10 @@
 
 Команди: [`.claude/commands/add-tests.md`](../../.claude/commands/add-tests.md),
 [`.claude/commands/sanitize-check.md`](../../.claude/commands/sanitize-check.md).
-Методика — [README](./README.md). Обидва прогони — `claude -p "/<команда>
-<аргумент>"`, `--permission-mode default` **без** allowlist: дозволи дає лише
-`allowed-tools` із frontmatter самої команди.
+Методика — [README](./README.md). Прогони — `claude -p "/add-tests app/src/quote.ts"`
+і `claude -p "/sanitize-check materials/client-brief.md"`, обидва з
+`--permission-mode default` **без** allowlist: дозволи дає лише `allowed-tools`
+із frontmatter самої команди.
 
 ## `/add-tests app/src/quote.ts`
 
