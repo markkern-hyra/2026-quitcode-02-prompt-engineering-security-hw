@@ -14,8 +14,10 @@
   лог кожного виклику інструмента;
 - `--strict-mcp-config` — MCP-конектори (n8n, Figma) вимкнені: прогін не має
   доступу ні до чого поза worktree;
-- `--permission-mode acceptEdits` + дозволені лише `npm`, `npx`, `node`,
-  `git diff|status|log` (решта Bash — заборонена);
+- `--permission-mode acceptEdits` + allowlist Bash. Прогони 00–02: `npm`,
+  `npx`, `node`, `git diff|status|log`. Після того як у прогоні 02a агент через
+  `npx` завантажив пакет із мережі, для наступних прогонів allowlist звужено до
+  `npm test`, `npm run typecheck`, `node`, `git diff|status|log|checkout`;
 - `--max-budget-usd 5` — стеля вартості на прогін;
 - `docs/prompt-runs/` прибирається з worktree (`skip-worktree` + видалення) —
   агент не бачить висновків попередніх прогонів і не може їх переказати;
@@ -33,3 +35,7 @@
 |---|---|---|
 | [00](./00-weak-prompt.md) | слабкий промпт (baseline) | вада помічена, але тести не написані; з уточненням — ❌ червоний `npm test` |
 | [01](./01-add-tests.md) | `add-tests` v1 → meta → v2 (markdown vs XML) | ✅ зелений, 9–13 `it.fails`, змінено лише тестовий файл |
+| [02](./02-debug-from-symptom.md) | `debug-from-symptom` v1 → v2 | ✅ вада виправлена; v1 тихо змінив невизначену поведінку → v2 показує «до / після» |
+| [03](./03-review-tests.md) | `review-tests` | ✅ 9/9 мутацій, 4 реальні дефекти тестів; код не змінено |
+| [04](./04-refactor-tests.md) | `refactor-tests` | ⚠️ 204 → 70 рядків, жодна перевірка не втрачена, але додано заборонені перевірки |
+| [05](./05-document-module.md) | `document-module` v1 → v2 | v1 ❌ 143 повтори відхиленої команди, бюджет вичерпано, 4 хибні твердження → v2 ✅ 15/15 тверджень підтверджено запуском, 1 хибне поза таблицею виправлено руками |
