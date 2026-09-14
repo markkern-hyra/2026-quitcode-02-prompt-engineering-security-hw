@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(./**/*KEY*)",
+      "Read(./**/*TOKEN*)",
+      "Read(./**/*SECRET*)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Edit(./materials/**)",
+      "Edit(./.github/**)",
+      "Edit(./.coderabbit.yaml)",
+      "Edit(./.claude/settings.json)",
+      "Edit(./.claude/settings.local.json)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(env)",
+      "Bash(printenv:*)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)"
+    ]
+  }
+}
