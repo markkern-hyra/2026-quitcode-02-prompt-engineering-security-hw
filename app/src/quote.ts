@@ -27,7 +27,7 @@ export interface QuoteInput {
  *
  * Розрахунок: `gross = hours * rateCents`, знижка `gross * discountPercent / 100`,
  * результат — `Math.round(gross - знижка)`.
- * Округлення: `Math.round` (половина центу округлюється вгору).
+ * Округлення: `Math.round` (половина цента округлюється вгору).
  *
  * Не визначено: від'ємні `hours` або `rateCents` — поточна реалізація
  * обчислює за формулою, результат від'ємний (напр. `hours=-10, rateCents=5000` → `-50000`).

@@ -29,7 +29,7 @@ cp "$PROMPT_FILE" "$OUT/prompt.txt"
 cd "$WT"
 PERSIST=--no-session-persistence
 if [ -n "${FOLLOWUP:-}" ]; then PERSIST=; fi
-env -u CLAUDECODE claude -p "$(cat "$PROMPT_FILE")" \
+env -u CLAUDECODE claude -p "$(cat "$OUT/prompt.txt")" \
   --output-format stream-json --verbose \
   $PERSIST --strict-mcp-config --max-budget-usd 5 \
   "$@" > "$OUT/log.jsonl" 2> "$OUT/stderr.txt"
@@ -46,3 +46,4 @@ git -C "$WT" diff > "$OUT/diff.patch"
 jq -r 'select(.type=="assistant") | .message.content[]? | select(.type=="tool_use") | "\(.name)\t\(.input|tostring|.[0:300])"' "$OUT/log.jsonl" > "$OUT/tool-calls.tsv"
 jq -r 'select(.type=="result") | .result' "$OUT/log.jsonl" > "$OUT/final.md"
 echo "done: $OUT"
+echo "прибрати worktree: git -C \"$REPO\" worktree remove --force \"$WT\""
