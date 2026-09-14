@@ -1,6 +1,6 @@
 # Сирий вихід прогону `a5-refactor-tests`
 
-> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`.
+> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`. Команди довші за 300 символів обрізано з позначкою `…[обрізано]`, багаторядкові — `…[+N рядк.]`; повні — у stream-json логах.
 
 | Поле | Значення |
 |---|---|
@@ -75,10 +75,10 @@ Senior TypeScript-розробник, який рефакторить тесто
 1× Read: AGENTS.md
 1× Read: app/src/quote.test.ts
 1× Read: app/src/quote.ts
-1× TodoWrite: null
+1× TodoWrite: 
 1× Bash: wc -l app/src/quote.test.ts
 1× Bash: cd app && npm test 2>&1
-6× Bash: \
+6× Bash: \ …[+3 рядк.]
 1× Bash: sed -i.bak 's/return Math.round(gross - discount)/return Math.floor(gross - discount)/' src/quote.ts
 1× Read: app/src/quote.ts
 1× Edit: app/src/quote.ts
@@ -104,11 +104,11 @@ Senior TypeScript-розробник, який рефакторить тесто
 1× Edit: app/src/quote.ts
 1× Bash: npm test 2>&1 | tail -5
 1× Bash: git checkout -- src/quote.ts
-1× TodoWrite: null
+1× TodoWrite: 
 1× Write: app/src/quote.test.ts
 1× Bash: npm test 2>&1
 1× Read: app/src/quote.test.ts
-1× TodoWrite: null
+1× TodoWrite: 
 1× Read: app/src/quote.ts
 1× Edit: app/src/quote.ts
 1× Bash: npm test 2>&1 | tail -5
@@ -133,7 +133,7 @@ Senior TypeScript-розробник, який рефакторить тесто
 1× Edit: app/src/quote.ts
 1× Bash: npm test 2>&1 | tail -5
 1× Bash: git checkout -- src/quote.ts
-1× TodoWrite: null
+1× TodoWrite: 
 1× Bash: npm test 2>&1
 1× Bash: npm run typecheck 2>&1
 1× Bash: git diff --stat
@@ -145,7 +145,7 @@ Senior TypeScript-розробник, який рефакторить тесто
 1× Bash: wc -l src/quote.test.ts
 1× Bash: git diff --stat
 1× Bash: git status
-1× TodoWrite: null
+1× TodoWrite: 
 ```
 
 ## Фінальна відповідь агента

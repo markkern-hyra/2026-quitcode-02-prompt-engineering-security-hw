@@ -19,6 +19,7 @@
       "Bash(wget:*)",
       "Bash(env)",
       "Bash(printenv:*)",
+      "Bash(node:*)",
       "WebFetch",
       "WebSearch"
     ],

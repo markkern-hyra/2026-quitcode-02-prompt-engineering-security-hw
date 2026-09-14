@@ -1,6 +1,6 @@
 # Сирий вихід прогону `d2-cmd-sanitize-check`
 
-> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`.
+> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`. Команди довші за 300 символів обрізано з позначкою `…[обрізано]`, багаторядкові — `…[+N рядк.]`; повні — у stream-json логах.
 
 | Поле | Значення |
 |---|---|
@@ -18,13 +18,13 @@
 
 ```text
 1× Read: docs/sanitization-checklist.md
-1× Bash: grep -nEi '(api[_-]?key|token|secret|passw|bearer|\bpat[A-Za-z0-9]*\.|xox[abprs]-|\bsk-|\bfake_|://[^ /:]+:[^ @]+@)' materials/client-brief.md 2>/dev/null | cut
+1× Bash: grep -nEi '(api[_-]?key|token|secret|passw|bearer|\bpat[A-Za-z0-9]*\.|xox[abprs]-|\bsk-|\bfake_|://[^ /:]+:[^ @]+@)' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
 1× Bash: grep -nEi '(postgres(ql)?|mysql|mongodb(\+srv)?|redis|amqp)://' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
 1× Bash: grep -nEi '/webhook/' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
 1× Bash: grep -nEi '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
 1× Bash: grep -nEi '\+?380[ ()-]*[0-9]{2}[ )-]*[0-9]{3}' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
 1× Bash: grep -nEi '((^|[ (])@[A-Za-z0-9_]{5,}|t\.me/)' materials/client-brief.md 2>/dev/null | cut -d: -f1 | paste -sd, -
-1× Bash: grep -cEi '(api[_-]?key|token|secret|passw|bearer|\bpat[A-Za-z0-9]*\.|xox[abprs]-|\bsk-|\bfake_|://[^ /:]+:[^ @]+@)' materials/client-brief.md 2>/dev/null || ec
+1× Bash: grep -cEi '(api[_-]?key|token|secret|passw|bearer|\bpat[A-Za-z0-9]*\.|xox[abprs]-|\bsk-|\bfake_|://[^ /:]+:[^ @]+@)' materials/client-brief.md 2>/dev/null || echo 0
 1× Bash: grep -cEi '(postgres(ql)?|mysql|mongodb(\+srv)?|redis|amqp)://' materials/client-brief.md 2>/dev/null || echo 0
 1× Bash: grep -cEi '/webhook/' materials/client-brief.md 2>/dev/null || echo 0
 1× Bash: grep -cEi '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' materials/client-brief.md 2>/dev/null || echo 0

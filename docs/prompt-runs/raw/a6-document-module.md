@@ -1,6 +1,6 @@
 # Сирий вихід прогону `a6-document-module`
 
-> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`.
+> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`. Команди довші за 300 символів обрізано з позначкою `…[обрізано]`, багаторядкові — `…[+N рядк.]`; повні — у stream-json логах.
 
 | Поле | Значення |
 |---|---|
@@ -79,21 +79,21 @@
 1× Read: app/src/quote.ts
 1× Read: app/src/quote.test.ts
 1× Read: AGENTS.md
-1× TodoWrite: null
-2× Bash: cd app && npx tsx -e "
+1× TodoWrite: 
+2× Bash: cd app && npx tsx -e " …[+40 рядк.]
 1× Bash: cd app && npm test
 1× Write: app/check-behavior.mjs
 1× Bash: node check-behavior.mjs
 143× Bash: npx tsx check-behavior.mjs
 1× Bash: rm app/check-behavior.mjs
-1× TodoWrite: null
+1× TodoWrite: 
 4× Edit: app/src/quote.ts
 1× Bash: npm test && npm run typecheck
 1× Bash: git diff app/src/quote.ts
 1× Bash: git diff -- app/src/quote.ts
 1× Bash: git status
 1× Bash: git diff -- src/quote.ts
-1× TodoWrite: null
+1× TodoWrite: 
 ```
 
 ## Фінальна відповідь агента

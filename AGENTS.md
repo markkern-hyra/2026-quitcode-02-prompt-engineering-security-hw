@@ -89,12 +89,13 @@ homework repo**.
   (`.claude/settings*.json`).
 - Правила 3–5 **частково** підкріплені в `.claude/settings.json`: `deny` для
   `.env`, `*KEY*`, `*TOKEN*`, `*SECRET*`, `*.pem`, `*.key`, змін завдання й
-  власних дозволів, `curl`, `wget`, `env`, `printenv`, `WebFetch`, `WebSearch`;
-  `ask` для `git push` і `gh pr create`. **Не покрито:** назви з `credential` і
-  з малими літерами (`key`, `token`, `secret`), мережеві запити через `node`,
-  `npx`, `gh api` тощо. Там тримає лише текст цих правил (перша лінія); дозволи —
-  друга лінія; надійно закриває тільки ізоляція (sandbox без мережі й
-  MCP-конекторів) — див. `docs/injection-report.md`.
+  власних дозволів, `curl`, `wget`, `env`, `printenv`, `node`, `WebFetch`,
+  `WebSearch`; `ask` для `git push` і `gh pr create`. **Не покрито:** назви з
+  `credential` і з малими літерами (`key`, `token`, `secret`); мережеві запити й
+  читання файлів через `npx`, `gh api` і через код, який виконує дозволений
+  раннер (напр. тест під `npm test`). Там тримає лише текст цих правил (перша
+  лінія); дозволи — друга лінія; надійно закриває тільки ізоляція (sandbox без
+  мережі й MCP-конекторів) — див. `docs/injection-report.md`.
 
 ## How to verify
 

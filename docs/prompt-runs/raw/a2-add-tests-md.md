@@ -1,6 +1,6 @@
 # Сирий вихід прогону `a2-add-tests-md`
 
-> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`.
+> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`. Команди довші за 300 символів обрізано з позначкою `…[обрізано]`, багаторядкові — `…[+N рядк.]`; повні — у stream-json логах.
 
 | Поле | Значення |
 |---|---|
@@ -92,16 +92,16 @@ Senior TypeScript-розробник, який пише тести для фін
 1× Read: app/src/quote.ts
 1× Read: app/src/quote.test.ts
 1× Read: app/package.json
-1× TodoWrite: null
+1× TodoWrite: 
 1× Edit: app/src/quote.test.ts
-1× TodoWrite: null
+1× TodoWrite: 
 1× Bash: cd app && npm test
 1× Bash: cd app && npm run typecheck
 1× Edit: app/src/quote.test.ts
 1× Bash: npm test 2>&1 | tail -20
 1× Bash: cd <worktree> && git diff --stat
 1× Grep: \.(only|skip)\(|console\.log|debugger
-1× TodoWrite: null
+1× TodoWrite: 
 1× Bash: cd app && npm test 2>&1 | tail -15
 ```
 

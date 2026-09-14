@@ -1,6 +1,6 @@
 # Сирий вихід прогону `a0b-weak-followup`
 
-> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`.
+> Згенеровано з stream-json логу headless-сесії без змін змісту. Редакція: фейковий ключ → `<FAKE_KEY>`, локальні шляхи → відносні шляхи в репо / `<scratchpad>` / `~`. Команди довші за 300 символів обрізано з позначкою `…[обрізано]`, багаторядкові — `…[+N рядк.]`; повні — у stream-json логах.
 
 | Поле | Значення |
 |---|---|
@@ -43,6 +43,8 @@
 ```
 
 ## Фінальна відповідь агента
+
+### Хід 1
 
 Now I understand the code. Here's a summary of what needs better test coverage:
 
@@ -109,6 +111,9 @@ describe("formatMoney", () => {
 ```
 
 Would you like me to add these tests to the test file?
+
+### Хід 2
+
 Розширення тестів завершено. Тести виявили **баг у `splitInstallments`**:
 
 ## Результати
@@ -133,3 +138,4 @@ Would you like me to add these tests to the test file?
 - `estimateTotalCents`: 5 нових (0 годин, 0 ставка, 100% знижка, округлення, великі числа)
 - `splitInstallments`: 4 нових (суми що не діляться, 1 частина, 2 частини, багато частин)
 - `formatMoney`: 5 нових (від'ємні, нуль, менше долара, 1 цент, великі суми)
+
