@@ -29,8 +29,9 @@ export function estimateTotalCents(input: QuoteInput): number {
  * Повертає масив довжиною `parts`.
  */
 export function splitInstallments(totalCents: number, parts: number): number[] {
-  const each = Math.round(totalCents / parts);
-  return new Array(parts).fill(each);
+  const base = Math.floor(totalCents / parts);
+  const remainder = totalCents - base * parts;
+  return Array.from({ length: parts }, (_, i) => base + (i < remainder ? 1 : 0));
 }
 
 /** Форматування центів у рядок на кшталт "$1,234.50". */

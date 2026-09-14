@@ -96,8 +96,7 @@ describe("splitInstallments — крайові випадки", () => {
     result.forEach((el) => expect(Number.isInteger(el)).toBe(true));
   });
 
-  // ВАДА: splitInstallments(100, 3) → [33, 33, 33], сума = 99, очікується 100
-  it.fails("зберігає суму при неподільному залишку (100, 3)", () => {
+  it("зберігає суму при неподільному залишку (100, 3)", () => {
     const total = 100;
     const parts = 3;
     const result = splitInstallments(total, parts);
@@ -105,8 +104,7 @@ describe("splitInstallments — крайові випадки", () => {
     expect(sum).toBe(total);
   });
 
-  // ВАДА: splitInstallments(10, 3) → [3, 3, 3], сума = 9, очікується 10
-  it.fails("зберігає суму при неподільному залишку (10, 3)", () => {
+  it("зберігає суму при неподільному залишку (10, 3)", () => {
     const total = 10;
     const parts = 3;
     const result = splitInstallments(total, parts);
@@ -114,13 +112,29 @@ describe("splitInstallments — крайові випадки", () => {
     expect(sum).toBe(total);
   });
 
-  // ВАДА: splitInstallments(1, 3) → [0, 0, 0], сума = 0, очікується 1
-  it.fails("зберігає суму при totalCents < parts (1, 3)", () => {
+  it("зберігає суму при totalCents < parts (1, 3)", () => {
     const total = 1;
     const parts = 3;
     const result = splitInstallments(total, parts);
     const sum = result.reduce((a, b) => a + b, 0);
     expect(sum).toBe(total);
+  });
+});
+
+describe("splitInstallments — регресія симптому бухгалтерії", () => {
+  it("$1.00 на 3 платежі: [34, 33, 33], сума = 100", () => {
+    const result = splitInstallments(100, 3);
+    expect(result).toEqual([34, 33, 33]);
+    expect(result.reduce((a, b) => a + b, 0)).toBe(100);
+  });
+
+  it("$1000.07 на 7 платежів: сума = 100007", () => {
+    const result = splitInstallments(100007, 7);
+    expect(result.reduce((a, b) => a + b, 0)).toBe(100007);
+    // Перевірка: різниця між max і min ≤ 1
+    const max = Math.max(...result);
+    const min = Math.min(...result);
+    expect(max - min).toBeLessThanOrEqual(1);
   });
 });
 
@@ -143,21 +157,11 @@ describe("splitInstallments — інваріант «сума частин до�
 
   testCases.forEach(({ total, parts, divisible }) => {
     const label = divisible ? "подільний" : "неподільний";
-    if (divisible) {
-      it(`сума частин = ціле для ${label} (${total}, ${parts})`, () => {
-        const result = splitInstallments(total, parts);
-        const sum = result.reduce((a, b) => a + b, 0);
-        expect(sum).toBe(total);
-      });
-    } else {
-      // Для неподільних — це вада, тому it.fails
-      // ВАДА: splitInstallments(total, parts) → сума ≠ total
-      it.fails(`сума частин = ціле для ${label} (${total}, ${parts})`, () => {
-        const result = splitInstallments(total, parts);
-        const sum = result.reduce((a, b) => a + b, 0);
-        expect(sum).toBe(total);
-      });
-    }
+    it(`сума частин = ціле для ${label} (${total}, ${parts})`, () => {
+      const result = splitInstallments(total, parts);
+      const sum = result.reduce((a, b) => a + b, 0);
+      expect(sum).toBe(total);
+    });
   });
 });
 
