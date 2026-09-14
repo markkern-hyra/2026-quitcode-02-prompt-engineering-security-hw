@@ -19,6 +19,13 @@
 Методика прогонів (свіжа headless-сесія, окремий worktree, лог кожного виклику
 інструмента) — [`docs/prompt-runs/README.md`](../docs/prompt-runs/README.md).
 
+### Slash-команди (Task D)
+
+| Команда | Що робить | Джерело | Перевірено |
+|---|---|---|---|
+| [`/add-tests <модуль>`](../.claude/commands/add-tests.md) | `add-tests` v2, узагальнений під будь-який TS-модуль; дозволи — лише редагування й `npm test`/typecheck | `add-tests.md` | на стартовому коді знайшов ваду `splitInstallments` — [07](../docs/prompt-runs/07-slash-commands.md) |
+| [`/sanitize-check <файл>`](../.claude/commands/sanitize-check.md) | Перевірка файлу на чутливі дані за чек-листом Task B — лише номери рядків і категорії, вміст файлу моделі не показується | `docs/sanitization-checklist.md` | на сирому брифі: 🔴 → «нікуди», жодного рядка брифу у виводі — [07](../docs/prompt-runs/07-slash-commands.md) |
+
 ### Що показали прогони
 
 - **Слабкий промпт не «помиляється» — він не має критерію «готово»:** агент
